@@ -12,29 +12,28 @@ import { Router } from '@angular/router';
   templateUrl: './customer-form.component.html',
   styleUrl: './customer-form.component.scss'
 })
-export class CustomerFormComponent  implements OnInit {
+export class CustomerFormComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private customerService: CustomerService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.form = this.fb.group({
       fullName: ['', Validators.required],
       address: ['', Validators.required],
       phone: [
-  '',
-  [
-    Validators.required,
-    Validators.minLength(10),
-    Validators.maxLength(10),
-    Validators.pattern(/^\d+$/), // ตัวเลขเท่านั้น
-  ],
-],
-
+        '',
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10),
+          Validators.pattern(/^\d+$/), // ตัวเลขเท่านั้น
+        ],
+      ],
       email: ['', [Validators.required, Validators.email]],
     });
   }

@@ -39,6 +39,6 @@ private loadUsers(): void {
 }
 
   onEdit(id: number): void {
-    this.router.navigate(['/users', id, 'edit']);
+    this.router.navigate(['/customers', id, 'edit']);
   }
 }
