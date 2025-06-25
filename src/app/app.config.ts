@@ -9,6 +9,7 @@ import { routes } from "./app.routes";
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { icons } from "./icons-provider";
 import { authInterceptorFn } from "./core/intercetor/auth.interceptor";
+import { loadingInterceptorFn } from "./core/intercetor/loading.interceptor";
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -21,7 +22,8 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(FormsModule),
 
    provideHttpClient(
-      withInterceptors([authInterceptorFn])   // ✅ ผ่านแน่นอน
+    withInterceptors([authInterceptorFn, loadingInterceptorFn])
+      
     )
   ]
 };
