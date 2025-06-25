@@ -6,11 +6,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../../../core/service/user/user.service';
 import { passwordComplexityValidator } from '../../../../shared/validators/password-complexity.validator';
 import { NzModalService } from 'ng-zorro-antd/modal';
+import { ComponentsModule } from '../../../../shared/components/components.module';
 
 @Component({
   selector: 'app-user-form',
   standalone: true,
-  imports: [SharedModule],
+  imports: [SharedModule,ComponentsModule],
   templateUrl: './user-form.component.html',
   styleUrl: './user-form.component.scss'
 })

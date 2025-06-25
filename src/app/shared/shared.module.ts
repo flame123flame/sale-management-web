@@ -8,10 +8,11 @@ import { TranslateModule } from '@ngx-translate/core';
 
 const coreModules: any[] = [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, NgZorroAntdModule, TranslateModule];
 const additionalModules: any[] = [];
+const components: any[] = [];
 
 @NgModule({
  
-  imports: [...coreModules, ...additionalModules],
+  imports: [...coreModules, ...additionalModules,],
   exports: [...coreModules, ...additionalModules],
 })
 export class SharedModule { }
