@@ -4,12 +4,8 @@
         <div *ngIf="!isCollapsed" class="  mb-4 display-flex mt-3 align-items-center" style="justify-content: center;">
             <div class="display-grid ml-2 " style="justify-items: center;">
                 <nz-avatar [nzSize]="64" nzIcon="user"></nz-avatar>
-
                 <b class="slate-gray-color font-size-20 mt-2 " *ngIf="!isCollapsed">ระบบขายสินค้าออนไลน์
                 </b>
-
-
-
             </div>
         </div>
         <div *ngIf="isCollapsed" class="  mb-4 display-flex mt-3 align-items-center" style="justify-content: center;">
@@ -36,14 +32,11 @@
                     <b class="ml-3 title-name-label">
                         {{ !isCollapsed ? currentDateTimeThai : 'ระบบขายสินค้าออนไลน์' }}
                     </b>
-
                 </span>
                 <div>
                     <button class="mr-5" (click)="showModal()" nz-button nzType="primary" nzDanger>ออกจากระบบ</button>
                 </div>
-
                 <ng-template #contentTemplate>
-
                 </ng-template>
             </div>
         </nz-header>

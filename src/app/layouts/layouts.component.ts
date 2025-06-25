@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-layouts',
- imports: [SharedModule], // ✅
+  imports: [SharedModule], // ✅
   templateUrl: './layouts.component.html',
   styleUrl: './layouts.component.scss',
   standalone: true
@@ -29,32 +29,32 @@ export class LayoutsComponent implements OnInit {
     { label: 'ผู้ใช้งาน', icon: 'team', route: '/users' },
     { label: 'สิทธิการใช้งาน', icon: 'safety-certificate', route: '/permissions' }
   ];
-currentDateTimeThai: string = '';
-ngOnInit(): void {
-  this.updateDateTime();
-  setInterval(() => this.updateDateTime(), 1000); // อัปเดตทุกวินาที
-}
+  currentDateTimeThai: string = '';
+  ngOnInit(): void {
+    this.updateDateTime();
+    setInterval(() => this.updateDateTime(), 1000); // อัปเดตทุกวินาที
+  }
 
-updateDateTime() {
-  const now = new Date();
-  const thaiMonths = [
-    'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
-    'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
-  ];
-  const day = now.getDate();
-  const month = thaiMonths[now.getMonth()];
-  const year = now.getFullYear() + 543;
-  const time = now.toLocaleTimeString('th-TH', { hour12: false });
+  updateDateTime() {
+    const now = new Date();
+    const thaiMonths = [
+      'มกราคม', 'กุมภาพันธ์', 'มีนาคม', 'เมษายน', 'พฤษภาคม', 'มิถุนายน',
+      'กรกฎาคม', 'สิงหาคม', 'กันยายน', 'ตุลาคม', 'พฤศจิกายน', 'ธันวาคม'
+    ];
+    const day = now.getDate();
+    const month = thaiMonths[now.getMonth()];
+    const year = now.getFullYear() + 543;
+    const time = now.toLocaleTimeString('th-TH', { hour12: false });
 
-  this.currentDateTimeThai = `วันที่ ${day} ${month} ${year} เวลา ${time}`;
-}
+    this.currentDateTimeThai = `วันที่ ${day} ${month} ${year} เวลา ${time}`;
+  }
   navigateTo(routeName: string | undefined): void {
     this._router.navigate([routeName]);
   }
 
   showModal(): void {
     console.log('showModal');
-    
+
     this.isVisible = true;
   }
 
@@ -63,7 +63,8 @@ updateDateTime() {
     setTimeout(() => {
       this.isVisible = false;
       this.isOkLoading = false;
-      // this._authService.signOut()
+      localStorage.removeItem('token');
+      this._router.navigate(['/auth/login']);
     }, 1000);
   }
 
