@@ -1,0 +1,82 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item>หน้าหลัก</nz-breadcrumb-item>
+    <nz-breadcrumb-item><a routerLink="/customers">ลูกค้า</a></nz-breadcrumb-item>
+    <nz-breadcrumb-item>เพิ่มลูกค้า</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<form nz-form [formGroup]="form" (ngSubmit)="onSubmit()" class="card-form-custom mt-3">
+    <h2>เพิ่มลูกค้า</h2>
+
+    <div nz-row [nzGutter]="24">
+        <!-- ชื่อ -->
+        <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="6">
+            <nz-form-label>ชื่อ</nz-form-label>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="'กรุณากรอกชื่อ'">
+                    <nz-input-group nzPrefixIcon="user" class="form-input">
+                        <input nz-input placeholder="ชื่อ" formControlName="fullName" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <!-- ที่อยู่ -->
+        <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="6">
+            <nz-form-label>ที่อยู่</nz-form-label>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="'กรุณากรอกที่อยู่'">
+                    <nz-input-group nzPrefixIcon="home" class="form-input">
+                        <input nz-input placeholder="ที่อยู่" formControlName="address" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <!-- เบอร์โทร -->
+        <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="6">
+            <nz-form-label>เบอร์โทร</nz-form-label>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="phoneErrorTpl">
+                    <nz-input-group nzPrefixIcon="phone" class="form-input">
+                        <input nz-input placeholder="เบอร์โทร" formControlName="phone" />
+                    </nz-input-group>
+                </nz-form-control>
+                <ng-template #phoneErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        กรุณากรอกเบอร์โทร
+                    </ng-container>
+                    <ng-container *ngIf="!control.hasError('required') && control.hasError('pattern')">
+                        เบอร์โทรต้องเป็นตัวเลขเท่านั้น
+                    </ng-container>
+                    <ng-container
+                        *ngIf="!control.hasError('required') && !control.hasError('pattern') && control.hasError('minlength')">
+                        เบอร์โทรต้องมีอย่างน้อย 10 หลัก
+                    </ng-container>
+                    <ng-container
+                        *ngIf="!control.hasError('required') && !control.hasError('pattern') && control.hasError('maxlength')">
+                        เบอร์โทรต้องไม่เกิน 10 หลัก
+                    </ng-container>
+                </ng-template>
+
+
+            </nz-form-item>
+        </div>
+
+        <!-- อีเมล -->
+        <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="6">
+            <nz-form-label>อีเมล</nz-form-label>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="'กรุณากรอกอีเมล'">
+                    <nz-input-group nzPrefixIcon="mail" class="form-input">
+                        <input nz-input placeholder="อีเมล" formControlName="email" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+    </div>
+
+    <div class="display-flex justify-center mt-4">
+        <button nz-button nzType="primary" class="mr-3" [disabled]="form.invalid">บันทึกข้อมูล</button>
+        <button nz-button nzType="default" type="button" (click)="onCancel()">กลับ</button>
+    </div>
+</form>
