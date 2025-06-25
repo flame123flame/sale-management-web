@@ -1,0 +1,61 @@
+<nz-layout>
+    <nz-sider class="menu-sidebar ant-layout-sider" nzCollapsible nzWidth="300px" nzBreakpoint="md"
+        [(nzCollapsed)]="isCollapsed" [nzTrigger]="null">
+        <div *ngIf="!isCollapsed" class="  mb-4 display-flex mt-3 align-items-center" style="justify-content: center;">
+            <div class="display-grid ml-2 " style="justify-items: center;">
+                <nz-avatar [nzSize]="64" nzIcon="user"></nz-avatar>
+
+                <b class="slate-gray-color font-size-20 mt-2 " *ngIf="!isCollapsed">ระบบขายสินค้าออนไลน์
+                </b>
+
+
+
+            </div>
+        </div>
+        <div *ngIf="isCollapsed" class="  mb-4 display-flex mt-3 align-items-center" style="justify-content: center;">
+            <div class="display-grid">
+                <nz-avatar [nzSize]="48" nzIcon="user"></nz-avatar>
+
+            </div>
+        </div>
+        <ul nz-menu nzMode="inline">
+            <ng-container *ngFor="let menuItem of menuList">
+                <li nz-menu-item (click)="navigateTo(menuItem.route)">
+                    <span nz-icon [nzType]="menuItem.icon"></span>
+                    <span>{{ menuItem.label}}</span>
+                </li>
+            </ng-container>
+        </ul>
+    </nz-sider>
+    <nz-layout class="nz-layout-background">
+        <nz-header>
+            <div class="app-header display-flex justify-content-between     align-items-center "
+                style="border-bottom: 1px solid #dedede;">
+                <span class="header-trigger ml-5" (click)="isCollapsed = !isCollapsed">
+                    <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+                    <b class="ml-3 title-name-label">
+                        {{ !isCollapsed ? currentDateTimeThai : 'ระบบขายสินค้าออนไลน์' }}
+                    </b>
+
+                </span>
+                <div>
+                    <button class="mr-5" (click)="showModal()" nz-button nzType="primary" nzDanger>ออกจากระบบ</button>
+                </div>
+
+                <ng-template #contentTemplate>
+
+                </ng-template>
+            </div>
+        </nz-header>
+        <nz-content>
+
+            <router-outlet></router-outlet>
+            <ng-template #iconTemplate><span nz-icon nzType="right" nzTheme="outline"></span></ng-template>
+        </nz-content>
+    </nz-layout>
+</nz-layout>
+
+<nz-modal [(nzVisible)]="isVisible" nzTitle="ออกจากระบบ" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()"
+    [nzOkLoading]="isOkLoading">
+    <p *nzModalContent>ยืนยันการออกจากระบบการใช้งาน?</p>
+</nz-modal>

@@ -1,0 +1,79 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item>หน้าหลัก</nz-breadcrumb-item>
+    <nz-breadcrumb-item>
+        <a>ผู้ใช้งาน</a>
+    </nz-breadcrumb-item>
+</nz-breadcrumb>
+<form nz-form class="card-form-custom mt-3">
+    <h2>ผู้ใช้งาน</h2>
+    <form>
+        <div nz-row [nzGutter]="24">
+
+            <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="12">
+                <nz-form-label>ชื่อจริง</nz-form-label>
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-group nzPrefixIcon="file-search" class="form-input">
+                            <input nz-input placeholder="ชื่อจริง" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="6">
+                <nz-form-label>นามสกุล</nz-form-label>
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-group nzPrefixIcon="file-search" class="form-input">
+                            <input nz-input placeholder="นามสกุล" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="6">
+                <nz-form-label>ชื่อเล่น</nz-form-label>
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-group nzPrefixIcon="file-search" class="form-input">
+                            <input nz-input placeholder="ชื่อเล่น" />
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+
+
+        </div>
+    </form>
+
+    <div class="display-flex justify-center">
+        <button class="mr-3 button-default" nz-button nzType="primary">ค้นหา</button>
+        <button class="mr-3 button-default" nz-button nzType="default">ล้างข้อมูล</button>
+        <button class="mr-3 button-green button-default" nz-button [routerLink]="['/users/add']"> เพิ่มข้อมูล</button>
+    </div>
+</form>
+<div class="background-white-color p-5 mt-3 card-custom-table">
+    <nz-table [nzShowPagination]="false" [nzData]="dataList" nzBordered nzSize="small">
+        <thead>
+            <tr>
+                <th class="text-center">ลำดับ</th>
+                <th class="text-center">ผู้ใช้งาน</th>
+                <th class="text-center">ชื่อเล่น</th>
+                <th class="text-center">ชื่อเต็ม</th>
+                <th class="text-center">จัดการ</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of dataList; let i = index">
+                <td class="text-center">{{ i + 1 }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.nickName }}</td>
+                <td>{{ user.fullName }}</td>
+                <td class="text-center">
+                    <button nz-button class="mr-2 mt-1" nzType="primary" (click)="onEdit(user.id)">แก้ไข</button>
+                    <button nz-button class="mr-2 mt-1" nzType="default">ลบ</button>
+                </td>
+            </tr>
+        </tbody>
+    </nz-table>
+
+
+</div>

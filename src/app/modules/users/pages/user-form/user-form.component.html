@@ -1,0 +1,87 @@
+<nz-breadcrumb>
+    <nz-breadcrumb-item>หน้าหลัก</nz-breadcrumb-item>
+    <nz-breadcrumb-item><a routerLink="/users">ผู้ใช้งาน</a></nz-breadcrumb-item>
+    <nz-breadcrumb-item>เพิ่มผู้ใช้งาน</nz-breadcrumb-item>
+</nz-breadcrumb>
+
+<form nz-form [formGroup]="form" (ngSubmit)="onSubmit()" class="card-form-custom mt-3">
+    <h2>ผู้ใช้งาน</h2>
+
+    <div nz-row [nzGutter]="24">
+
+        <!-- ชื่อเล่น -->
+        <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="6">
+            <nz-form-label>ชื่อเล่น</nz-form-label>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="'กรุณากรอกชื่อเล่น'">
+                    <nz-input-group nzPrefixIcon="user" class="form-input">
+                        <input nz-input placeholder="ชื่อเล่น" formControlName="nickName" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <!-- ชื่อเต็ม -->
+        <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="6">
+            <nz-form-label>ชื่อเต็ม</nz-form-label>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="'กรุณากรอกชื่อเต็ม'">
+                    <nz-input-group nzPrefixIcon="user" class="form-input">
+                        <input nz-input placeholder="ชื่อเต็ม" formControlName="fullName" />
+                    </nz-input-group>
+                </nz-form-control>
+            </nz-form-item>
+        </div>
+
+        <!-- Username -->
+        <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="6">
+            <nz-form-label>ชื่อผู้ใช้งาน</nz-form-label>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="usernameErrorTpl">
+                    <nz-input-group nzPrefixIcon="lock" class="form-input">
+                        <input nz-input placeholder="ชื่อผู้ใช้งาน" formControlName="username" />
+                    </nz-input-group>
+                </nz-form-control>
+                <ng-template #usernameErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        กรุณากรอกชื่อผู้ใช้งาน
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('minlength')">
+                        ต้องมีอย่างน้อย 4 ตัวอักษร
+                    </ng-container>
+                </ng-template>
+            </nz-form-item>
+        </div>
+        <div nz-col [nzXs]="24" [nzMd]="12" [nzLg]="6">
+            <nz-form-label>รหัสผ่าน</nz-form-label>
+            <nz-form-item>
+                <nz-form-control [nzErrorTip]="passwordErrorTpl">
+                    <nz-input-group nzPrefixIcon="lock" class="form-input">
+                        <input nz-input type="password" placeholder="รหัสผ่าน" formControlName="password" />
+                    </nz-input-group>
+                </nz-form-control>
+                <ng-template #passwordErrorTpl let-control>
+                    <ng-container *ngIf="control.hasError('required')">
+                        กรุณากรอกรหัสผ่าน
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('minlength')">
+                        ต้องมีอย่างน้อย 6 ตัวอักษร
+                    </ng-container>
+                    <ng-container *ngIf="control.hasError('passwordComplexity')">
+                        รหัสผ่านต้องมีทั้งตัวอักษรพิมพ์ใหญ่ พิมพ์เล็ก และตัวเลข
+                    </ng-container>
+                </ng-template>
+            </nz-form-item>
+        </div>
+
+    </div>
+
+    <div class="display-flex justify-center mt-4">
+        <button nz-button nzType="primary" class="mr-3" [disabled]="form.invalid">
+            บันทึกข้อมูล
+        </button>
+        <button nz-button nzType="default" type="button" (click)="onCancel()">
+            กลับ
+        </button>
+    </div>
+</form>

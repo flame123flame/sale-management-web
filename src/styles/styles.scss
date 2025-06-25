@@ -1,0 +1,304 @@
+@import "./customs/margin.scss";
+@import "./customs/padding.scss";
+@import "./customs/colors.scss";
+@import "./customs/font-size.scss";
+
+
+
+@font-face {
+  font-family: 'Prompt';
+  src: url(./../assets/fonts/prompt/Prompt-ExtraLight.ttf) format('truetype');
+  font-weight: 300;
+  /* Light */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prompt';
+  src: url(./../assets/fonts/prompt/Prompt-ExtraLightItalic.ttf) format('truetype');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prompt';
+  src: url(./../assets/fonts/prompt/Prompt-Medium.ttf) format('truetype');
+  font-weight: 500;
+  /* Medium */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prompt';
+  src: url(./../assets/fonts/prompt/Prompt-MediumItalic.ttf) format('truetype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prompt';
+  src: url(./../assets/fonts/prompt/Prompt-Regular.ttf) format('truetype');
+  font-weight: 400;
+  /* Regular */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prompt';
+  src: url(./../assets/fonts/prompt/Prompt-Italic.ttf) format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prompt';
+  src: url(./../assets/fonts/prompt/Prompt-SemiBold.ttf) format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prompt';
+  src: url(./../assets/fonts/prompt/Prompt-SemiBoldItalic.ttf) format('truetype');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prompt';
+  src: url(./../assets/fonts/prompt/Prompt-Bold.ttf) format('truetype');
+  font-weight: bold;
+  /* Bold */
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Prompt';
+  src: url(../assets/fonts/prompt/Prompt-BoldItalic.ttf) format('truetype');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  /* ===== Colors ===== */
+  --body-color: #e4e9f7;
+  --sidebar-color: #fff;
+  --primary-color: #695cfe;
+  --primary-color-light: #f6f5ff;
+  --toggle-color: #ddd;
+  --text-color: #707070;
+
+  /* ====== Transition ====== */
+  --tran-03: all 0.2s ease;
+  --tran-03: all 0.3s ease;
+  --tran-04: all 0.3s ease;
+  --tran-05: all 0.3s ease;
+}
+
+* {
+  font-family: "Prompt";
+}
+
+.h-100 {
+  height: 100%;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.full-width-line {
+  width: 100%;
+  height: 3.5px; // Adjust the height as needed
+  background: linear-gradient(to right,
+      #ff0000,
+      #ff6600,
+      #ffcc00,
+      #99ff00,
+      #00ff66,
+      #00ccff,
+      #0066ff,
+      #9900ff,
+      #ff00cc,
+      #ff0066); // Set the color of the line
+  margin: 0; // Remove default margin
+  padding: 0; // Remove default padding
+}
+
+.display-grid {
+  display: grid;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-content-between {
+  justify-content: space-between
+}
+
+.align-items-center {
+  align-items: center
+}
+
+.border-none {
+  border: none;
+}
+
+.border-radius-2 {
+  border-radius: 2px;
+}
+
+.border-radius-3 {
+  border-radius: 3px;
+}
+
+.border-radius-4 {
+  border-radius: 4px;
+}
+
+.border-radius-5 {
+  border-radius: 5px;
+}
+
+.border-radius-6 {
+  border-radius: 6px;
+}
+
+.overflow-h {
+  overflow: hidden
+}
+
+.form-input {
+  padding: 8px;
+  border-radius: 6px;
+}
+
+
+
+.container-table {
+  margin-block: 10px;
+  background-color: white;
+
+  // border: 0.5px solid #EEEEEE;
+  border: 1px solid white;
+  border-radius: 6px;
+}
+
+nz-table {
+  // overflow: auto;
+  /* Add scrollbar when necessary */
+}
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  nz-table {
+    overflow-x: auto;
+    /* Add horizontal scrollbar for small screens */
+  }
+}
+
+.button-green {
+  background-color: green !important;
+  color: white !important;
+  border: 1px solid green !important;
+}
+
+.button-yellow {
+  background-color: #ff6600 !important;
+  color: white !important;
+  border: 1px solid #ff6600 !important;
+}
+
+.custom-placeholder {
+  font-size: 14px;
+  /* Set the desired font size */
+}
+
+.custom-placeholder .ant-select-selection-placeholder {
+  font-size: 14px;
+  /* Set the desired font size */
+}
+
+.button-green:hover {
+  background-color: green !important;
+  color: white !important;
+  border: 1px solid green !important;
+}
+
+.button-default {
+  width: 110px;
+  border-radius: 4px;
+  font-size: 15px;
+  height: 35px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.card-form-custom {
+  padding: 14px;
+  border-radius: 6px;
+  background-color: white;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  color: rgba(0, 0, 0, 0.25);
+  background: #eaeaea;
+  cursor: not-allowed;
+  border-radius: 6px;
+}
+
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  position: relative;
+  background-color: #fff;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  border-radius: 6px;
+}
+
+.ant-input-affix-wrapper-disabled {
+  color: rgba(0, 0, 0, 0.25);
+  background-color: #eaeaea;
+  border-color: #d9d9d9;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+nz-date-picker {
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px !important;
+  height: 40px;
+}
+
+.card-custom-table {
+  padding: 30px;
+  border-radius: 6px;
+  background-color: white;
+}
